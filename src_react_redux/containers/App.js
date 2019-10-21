@@ -9,6 +9,6 @@ import {increment,decrement} from '../redux/action-creators'
 //   decrement:number => dispatch(decrement(number))
 // })
 export default connect(
-  state => ({count:state}),
-  {increment,decrement}
+  state => ({count:state.count}),
+  {increment,decrement,incrementAsync}
 )(Counter)
