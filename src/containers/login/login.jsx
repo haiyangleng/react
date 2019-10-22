@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import {Form,Icon,Button,Input} from 'antd'
+import qs from 'qs'
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
+
+import {loginAsync} from '../../redux/action-creators/user'
 import logo from './images/logo.png'
 import "./login.less";
+//import ajax from '../../api/ajax'
+
 const {Item} = Form
 class Login extends Component {
   handleSubmit = (e)=>{
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        const {username,password} = values
+        this.props.loginAsync(username,password)
       }
     });
   }
@@ -27,6 +35,10 @@ class Login extends Component {
     }
   }
   render() {
+    const {hasLogin} = this.props
+    if(hasLogin){
+      return <Redirect to='/admin'/>
+    }
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="login">
@@ -74,5 +86,9 @@ class Login extends Component {
     )
   }
 }
-const WrapperForm = Form.create()(Login)
-export default WrapperForm
+// const WrapperForm = Form.create()(Login)
+// export default WrapperForm
+export default connect(
+  state => ({hasLogin:state.user.hasLogin}),
+  {loginAsync}
+)(Form.create()(Login))
