@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import {Switch,Route,BrowserRouter} from 'react-router-dom'
+import {Switch,Route,Router} from 'react-router-dom'
 import {Button, message} from 'antd'
+
 import Login from './containers/login/login'
 import Admin from './containers/admin/admin'
+import history from './history'
 
 export default class App extends Component {
   handleClick = ()=>{
@@ -10,12 +12,12 @@ export default class App extends Component {
   }
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-        <Route path='/login' component={Login}/>
+        <Route path='/login' component={Login} exact/>
         <Route path='/admin' component={Admin}/>
         </Switch>
-      </BrowserRouter>
+      </Router>
     )
   }
 }

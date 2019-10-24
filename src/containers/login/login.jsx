@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Form,Icon,Button,Input} from 'antd'
-import qs from 'qs'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
