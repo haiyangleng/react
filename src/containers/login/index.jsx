@@ -4,8 +4,9 @@ import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
 import {loginAsync} from '../../redux/action-creators/user'
-import logo from './images/logo.png'
+import logo from '../../assets/images/logo.png'
 import "./login.less";
+import WithCheckLogin from '../with-check-login'
 //import ajax from '../../api/ajax'
 
 const {Item} = Form
@@ -34,10 +35,7 @@ class Login extends Component {
     }
   }
   render() {
-    const {hasLogin} = this.props
-    if(hasLogin){
-      return <Redirect to='/admin'/>
-    }
+    
     const { getFieldDecorator } = this.props.form;
     return (
       <div className="login">
@@ -77,7 +75,7 @@ class Login extends Component {
               )}
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit"    className="login-form-button">登陆</  Button>
+                <Button type="primary" htmlType="submit" className="login-form-button">登陆</  Button>
               </Form.Item>
           </Form>
         </div>
@@ -88,6 +86,6 @@ class Login extends Component {
 // const WrapperForm = Form.create()(Login)
 // export default WrapperForm
 export default connect(
-  state => ({hasLogin:state.user.hasLogin}),
+  state => ({}),
   {loginAsync}
-)(Form.create()(Login))
+)(Form.create()(WithCheckLogin(Login)))
