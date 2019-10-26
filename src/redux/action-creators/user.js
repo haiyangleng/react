@@ -18,7 +18,7 @@ export function loginAsync(username,password){
     const result = await reqLogin({username,password})
     if(result.status === 0){
       const {user,token} = result.data
-      storage.set(storage.KEYS.USER_KEY,JSON.stringify(user))
+      storage.set(storage.KEYS.USER_KEY,user)
       storage.set(storage.KEYS.TOKEN_KEY,token)
       dispatch(saveUserToken(user,token))
     }else{

@@ -1,3 +1,7 @@
+/* 
+左侧Menu导航的数据配置
+*/
+// 根据menuList生成<Item>和<SubMenu>组件的数组
 const menuList = [
   {
     title: '首页', // 菜单标题名称

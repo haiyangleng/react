@@ -14,7 +14,7 @@ import User from '../user'
 import Line from '../../components/charts/line'
 import Bar from '../../components/charts/bar'
 import Pie from '../../components/charts/pie'
-const { Header, Footer, Sider, Content } = Layout
+const { Footer, Sider, Content } = Layout
 
 @WithCheckLogin
 class Admin extends Component {

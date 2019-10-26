@@ -27,3 +27,4 @@ export const reqWheather = (city)=>{
     })
   })
 }
+export const reqCategorys = () => ajax('/manage/category/list')

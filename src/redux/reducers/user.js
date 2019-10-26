@@ -10,7 +10,6 @@ const initUser = {
 export default function user(state=initUser,action){
   switch (action.type) {
     case SAVE_USER_TOKEN:
-      console.log(1)
       const {user,token} = action.data
       return {
         user,
@@ -23,7 +22,8 @@ export default function user(state=initUser,action){
           token:'',
           hasLogin:false
         }
-    default:return state
-      break;
+    default:
+      console.log(action.type)
+      return state
   }
 }

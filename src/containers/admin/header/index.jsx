@@ -11,7 +11,7 @@ import './index.less'
 import {reqWheather} from '../../../api'
 
 @connect(
-  state =>({username:state.user.user.username}),
+  state =>({username:state.user.user.username,headerTitle:state.headerTitle}),
   {removeUserToken}
 )
 @withRouter
@@ -62,17 +62,18 @@ class Header extends Component{
   render(){
     const path = this.props.location.pathname
     const {currentTime,isFullScreen} = this.state
+    const {username,headerTitle} = this.props
     return (
       <div className="header">
         <div className="header-top">
           <Button size="small" onClick={this.handleFullScreen}>
             <Icon type={isFullScreen ? 'fullscreen-exit' : 'fullscreen'} />
           </Button> &nbsp;
-          <span>欢迎, {this.props.username}</span>
+          <span>欢迎, {username}</span>
           <LinkButton onClick={this.logout}>退出</LinkButton>
         </div>
         <div className="header-bottom">
-          <div className="header-bottom-left">{path}</div>
+          <div className="header-bottom-left">{headerTitle}</div>
           <div className="header-bottom-right">
             <span>{currentTime}</span>
             <img src={this.state.dayPictureUrl} alt="weather"/>
