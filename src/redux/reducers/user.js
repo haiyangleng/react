@@ -23,7 +23,6 @@ export default function user(state=initUser,action){
           hasLogin:false
         }
     default:
-      console.log(action.type)
       return state
   }
 }

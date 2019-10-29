@@ -18,11 +18,12 @@ class LeftNav extends Component {
     
     return menuList.reduce((pre,item)=>{
       
-      const path = this.props.location.pathname
+      const path = this.props.location.pathname.substring(6)
+      
 
       if(!item.children){
         
-        if(item.key === path && item.title !== this.props.headerTitle){
+        if(path.indexOf(item.key)===0 && item.title !== this.props.headerTitle){
           this.props.setHeaderTitle(item.title)
         }
 
@@ -36,7 +37,7 @@ class LeftNav extends Component {
         ))
       }else{
         
-        if(item.children.some(item=>item.key===path)){
+        if(item.children.some(item=>path.indexOf(item.key)===0)){
           this.openKey = item.key
         }
         pre.push(
